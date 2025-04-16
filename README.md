@@ -8,8 +8,15 @@ Detecting Fraud in Customer Calls Using Pre-Trained Language Model Combined with
 2. conda activate fraud_detection
    > sudo apt update && sudo apt install ffmpeg portaudio19-dev
 
+3. Install the Whisper Mechanism
+ 
+    To use **openai Whisper** follow this [link](https://github.com/openai/whisper)
+ 
+    To use **WhisperX** follow this [link](https://github.com/m-bain/whisperX)
+ 
 3. Install Libraries
    ```pip install -r requirements.txt```
+
 ## Usage
 Run: 
 ```python fraud_deteaction.py```

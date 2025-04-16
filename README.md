@@ -4,4 +4,4 @@ Detecting Fraud in Customer Calls Using Pre-Trained Language Model Combined with
 
 ## Model Framework
 
-![image](/images/fraud_system.png)
+![image](/images/fraud_system_copy.png)

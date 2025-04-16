@@ -1,7 +1,7 @@
 # Fraud Detection in Customer Calls
 Detecting Fraud in Customer Calls Using Pre-Trained Language Model Combined with A Simple Rule-Based Method
 
-## Instalation
+## Installation
 ### Requirements
 1. Create your Python 3 virtual environment 
    ```conda create --name fraud_deteaction python3```

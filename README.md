@@ -3,7 +3,7 @@ Detecting Fraud in Customer Calls Using Pre-Trained Language Model Combined with
 
 ## Instalation
 ### Requirements
-1. Create your Python 3 virtual environment
+1. Create your Python 3 virtual environment \\
    ```conda create --name fraud_deteaction python3```
 2. Install Libraries
    ```pip install -r requirements.txt```

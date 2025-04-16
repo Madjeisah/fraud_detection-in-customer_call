@@ -1,1 +1,5 @@
 
+pyaudio
+wave
+colorama
+halo

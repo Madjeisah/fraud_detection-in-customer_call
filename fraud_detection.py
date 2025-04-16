@@ -25,7 +25,7 @@ compute_type = "float16" # change to "int8" if low on GPU mem (may reduce accura
 # result = model.transcribe(audio, batch_size=batch_size)
 # print(result["segments"]) 
 
-# Try whisper
+# Try Openai Whisper
 model = whisper.load_model("small.en") #"large-v2" "small.en"
 result = model.transcribe("customer_call.wav")
 print(result["text"]) 
@@ -41,7 +41,7 @@ model = AutoModelForSequenceClassification.from_pretrained(model_name)
 fraud_keywords = set([
     "fraud", "scam", "fake", "false", "cheat", "deceptive", "bogus", "counterfeit", "urgent",
     "phony", "forged", "hoax", "shady", "suspicious", "dishonest", "unlawful", "risk", "payment",
-    "unauthorized", "unauthorised", "money laundering", "identity theft", "phishing","steal", "payment information",
+    "unauthorized", "unauthorised", "money laundering", "identity theft", "phishing", "steal", "payment information",
     "chargeback", "credit card", "credit card fraud", "wire fraud", "Ponzi scheme", "pyramid scheme", "transactions",
     "hacking", "malware", "ransomware", "keylogger", "spoofing", "spyware", "earliest convenience",
     "fake website", "data breach", "click fraud", "brute force attack", "breach", "fraudulent",
@@ -57,7 +57,7 @@ risk_labels = ["Very Low Risk", "Low Risk", "Medium Risk", "High Risk", "Very Hi
 
 def keyword_detection(text):
     """
-    Detect fraud-related keywords in customer call transcript.
+    Detect fraud-related keywords in customer call transcripts.
 
     Args:
         text (str): The customer call transcript.
@@ -104,7 +104,7 @@ def confidence_level(keyword_counts, risk_label, sys_confidence):
     Returns:
         ---
     """
-    # Determine the risk level based on the keywords counts
+    # Determine the risk level based on the keyword counts
     if keyword_counts >= 5:
         risk_index = 4  # "Very High Risk"
     elif keyword_counts >= 3:
@@ -116,7 +116,7 @@ def confidence_level(keyword_counts, risk_label, sys_confidence):
     else:
         risk_index = 0  # "Very Low Risk"
 
-    # Assign system comfidence based on the level risk
+    # Assign system confidence based on the level of risk
     if risk_label in ["High Risk", "Very High Risk"]:
         if float(sys_confidence.strip('%')) >= 80:
             risk_index = max(4, risk_index)  # Ensure "Very High Risk"
@@ -130,10 +130,10 @@ def fraud_detection_system(text):
     """
 
     Args:
-        text (str): Customer call transcrpt
+        text (str): Customer call transcript
 
     Returns:
-        dict: A dictionary of the System's risk assesment.
+        dict: A dictionary of the System's risk assessment.
     """
     detect_keywords = keyword_detection(text)
     
@@ -146,7 +146,7 @@ def fraud_detection_system(text):
                                    output["Fraud Risk Level"], 
                                    output["Confidence"])
     return{
-        "Sytem Detected Fruad Keywords": detect_keywords,
+        "System Detected Fraud Keywords": detect_keywords,
         "System Analysis": output,
         "Risk Assesment Level": risk_assesment
     }
